@@ -286,6 +286,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"swiftUIColorGame/Preview Content\"";
+				DEVELOPMENT_TEAM = 87J9USP4XW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = swiftUIColorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -305,6 +306,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"swiftUIColorGame/Preview Content\"";
+				DEVELOPMENT_TEAM = 87J9USP4XW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = swiftUIColorGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
