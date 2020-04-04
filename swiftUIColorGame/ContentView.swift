@@ -7,10 +7,8 @@
 //
 
 import SwiftUI
-
-func t1() {
-    print("t1 got called")
-}
+import UIKit
+import AudioToolbox
 struct ContentView: View {
     @State private var D:Double = 40
     @State public var winner:Int
@@ -60,16 +58,16 @@ struct ContentView: View {
         print(mainColor)
         print(score)
         print(tileColors)
+        print(D)
     }
     func evaluate(pressed: Int) {
         if(pressed == self.winner) {
             self.score = self.score + 1
-            print("yay")
             self.setBoard()
         }
         else {
             self.score = 0
-            print("nay")
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
             self.setBoard()
         }
     }
@@ -77,6 +75,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
+            Text("Color Picker Game").font(.largeTitle)
+            Spacer()
             Text("Score: "+String(self.score)).bold()
             Rectangle()
             .fill(Color(red: self.mainColor[0] / 255, green: self.mainColor[2] / 255, blue: self.mainColor[1] / 255))
@@ -132,6 +132,14 @@ struct ContentView: View {
                 }
                                
             }
+            Spacer()
+            Text("Difficulty Level").padding(.bottom, 20).font(.title)
+            HStack {
+                Text("Harder").padding(.leading, 100)
+                Spacer()
+                Text("Easier").padding(.trailing, 100)
+            }
+            Slider(value: ($D), in: 5...60, step: 1).accentColor(Color(red: self.mainColor[0] / 255, green: self.mainColor[2] / 255, blue: self.mainColor[1] / 255)).padding(.leading, 100).padding(.trailing, 100)
             
         }
     }
