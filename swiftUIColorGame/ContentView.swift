@@ -10,16 +10,11 @@ import SwiftUI
 import UIKit
 import AudioToolbox
 struct ContentView: View {
-    @State private var D:Double = 40
+    @State private var variance:Double = 40
     @State public var winner:Int
     @State private var score:Int = 0
     @State public var mainColor:Array<Double>
     @State public var tileColors:Array<Array<Double>>
-    func t2() -> Void {
-        print("aaaaaaaaa")
-        
-        
-    }
     func mutateRandomly(n: Double, variance: Double) -> Double {
         let mutateFraction = Double.random(in: 0...variance)
         let addOrNot = Bool.random()
@@ -50,7 +45,7 @@ struct ContentView: View {
         self.mainColor = self.randomColorGenerator()
         for index in (0...3) {
             if(index != self.winner) {
-                tileColors[index] = self.randomColorMutator(OGcolor: mainColor, variance: D)
+                tileColors[index] = self.randomColorMutator(OGcolor: mainColor, variance: variance)
             }
         }
         self.tileColors[self.winner]=self.mainColor
@@ -58,7 +53,7 @@ struct ContentView: View {
         print(mainColor)
         print(score)
         print(tileColors)
-        print(D)
+        print(variance)
     }
     func evaluate(pressed: Int) {
         if(pressed == self.winner) {
@@ -103,9 +98,7 @@ struct ContentView: View {
                         .fill(Color(red: self.tileColors[1][0] / 255, green: self.tileColors[1][2] / 255, blue: self.tileColors[1][1] / 255))
                         .frame(width:95, height: 95)
                         .cornerRadius(10)
-
                 }
-                               
             }
             HStack{
                 Button(action: {
@@ -128,9 +121,7 @@ struct ContentView: View {
                         .fill(Color(red: self.tileColors[3][0] / 255, green: self.tileColors[3][2] / 255, blue: self.tileColors[3][1] / 255))
                         .frame(width:95, height: 95)
                         .cornerRadius(10)
-
                 }
-                               
             }
             Spacer()
             Text("Difficulty Level").padding(.bottom, 20).font(.title)
@@ -139,7 +130,7 @@ struct ContentView: View {
                 Spacer()
                 Text("Easier").padding(.trailing, 100)
             }
-            Slider(value: ($D), in: 5...60, step: 1).accentColor(Color(red: self.mainColor[0] / 255, green: self.mainColor[2] / 255, blue: self.mainColor[1] / 255)).padding(.leading, 100).padding(.trailing, 100)
+            Slider(value: ($variance), in: 5...60, step: 1).accentColor(Color(red: self.mainColor[0] / 255, green: self.mainColor[2] / 255, blue: self.mainColor[1] / 255)).padding(.leading, 100).padding(.trailing, 100)
             
         }
     }
